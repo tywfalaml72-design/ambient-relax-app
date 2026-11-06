@@ -3,46 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مساحة الهدوء | أصوات الاسترخاء والتركيز</title>
+    <title>الهروب من الغرفة المظلمة 👁️</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>مساحة الهدوء 🌿</h1>
-            <p>امزج الأصوات المفضلة لديك لتركيز أفضل أو استرخاء تام</p>
-        </header>
-
-        <div class="sound-grid">
-            <!-- كارت صوت المطر -->
-            <div class="sound-card" id="card-rain">
-                <div class="icon">🌧️</div>
-                <h3>صوت المطر</h3>
-                <button class="play-btn" onclick="toggleSound('rain')">تشغيل</button>
-                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="setVolume('rain', this.value)">
-                <audio id="audio-rain" loop src="https://assets.mixkit.co/active_storage/sfx/2515/2515-preview.mp3"></audio>
+    <div class="game-container">
+        <!-- شريط الحالة (بطارية الكشاف ومستوى الذعر) -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span>🔦 البطارية:</span>
+                <div class="bar"><div id="battery-bar" class="fill battery" style="width: 100%;"></div></div>
             </div>
-
-            <!-- كارت صوت الكافيه -->
-            <div class="sound-card" id="card-cafe">
-                <div class="icon">☕</div>
-                <h3>أجواء الكافيه</h3>
-                <button class="play-btn" onclick="toggleSound('cafe')">تشغيل</button>
-                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="setVolume('cafe', this.value)">
-                <audio id="audio-cafe" loop src="https://assets.mixkit.co/active_storage/sfx/301/301-preview.mp3"></audio>
-            </div>
-
-            <!-- كارت صوت الرياح / الطبيعة -->
-            <div class="sound-card" id="card-wind">
-                <div class="icon">🍃</div>
-                <h3>نسيم الطبيعة</h3>
-                <button class="play-btn" onclick="toggleSound('wind')">تشغيل</button>
-                <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="0.5" oninput="setVolume('wind', this.value)">
-                <audio id="audio-wind" loop src="https://assets.mixkit.co/active_storage/sfx/2670/2670-preview.mp3"></audio>
+            <div class="status-item">
+                <span>😱 الرعب والذعر:</span>
+                <div class="bar"><div id="panic-bar" class="fill panic" style="width: 0%;"></div></div>
             </div>
         </div>
+
+        <!-- شاشة العرض النصية والأجواء -->
+        <div class="story-box">
+            <p id="story-text">تستيقظ في مكان مظلم جداً... تشعر ببرودة المكان وصوت قطرات ماء تنقط بالقرب منك. لا تذكر كيف وصلت إلى هنا، ومعك فقط كشاف يدوي قديم.</p>
+        </div>
+
+        <!-- الأزرار والخيارات التفاعلية -->
+        <div id="choices-container" class="choices-grid">
+            <button class="choice-btn" onclick="makeChoice(1)">تشغيل الكشاف واستكشاف الغرفة</button>
+            <button class="choice-btn" onclick="makeChoice(2)">التحسس في الظلام باليدين</button>
+        </div>
     </div>
+
+    <!-- الأصوات المرعبة -->
+    <audio id="snd-drip" loop src="https://assets.mixkit.co/active_storage/sfx/2515/2515-preview.mp3"></audio>
+    <audio id="snd-footsteps" src="https://assets.mixkit.co/active_storage/sfx/2670/2670-preview.mp3"></audio>
+    <audio id="snd-scare" src="https://assets.mixkit.co/active_storage/sfx/301/301-preview.mp3"></audio>
 
     <script src="script.js"></script>
 </body>
